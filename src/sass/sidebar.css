@@ -1,0 +1,37 @@
+.sidebar {
+  max-width: 200px;
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; }
+
+.sidebar__search {
+  width: 80%;
+  outline: none;
+  text-indent: 5px;
+  margin-top: 10px; }
+
+.sidebar__list {
+  margin-top: 10px;
+  overflow: auto; }
+
+.sidebar__list_item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background-color: transparent;
+  transition: background-color 0.5s ease-out; }
+  .sidebar__list_item:hover {
+    background-color: #117bfb;
+    cursor: pointer; }
+
+.sidebar__list_img {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #eee; }
+
+.sidebar__list_name {
+  padding-left: 10px; }
