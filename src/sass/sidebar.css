@@ -21,12 +21,12 @@
   padding: 10px;
   display: flex;
   align-items: center;
-  border-radius: 5px;
-  background-color: transparent;
-  transition: background-color 0.5s ease-out; }
+  border-radius: 5px; }
   .sidebar__list_item:hover {
-    background-color: #117bfb;
     cursor: pointer; }
+
+.sidebar__list_item--active {
+  background-color: #117bfb; }
 
 .sidebar__list_img {
   width: 40px;

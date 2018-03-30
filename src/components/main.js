@@ -1,4 +1,4 @@
-import React, { Component }  from 'react'
+import React, { Component }  from 'react';
 
 import '../sass/main.css'
 import Send from '../images/send-button.png'
@@ -19,15 +19,19 @@ class Main extends Component {
   clickButton = () => {
     let { actions: { addMessage } } = this.props;
     let { value } = this.state;
-    addMessage(value)
+    // addMessage(value)
     console.log(this.props.state.message)
   };
 
   render(){
     let { value, messages } = this.state;
+    let { state: { userInfo } } = this.props;
+
     let listMessages = messages.map((message) =>
       <li>{message}</li>
-    )
+    );
+    console.log(userInfo)
+
     return(
       <div className="main">
         <ul className="message-list">

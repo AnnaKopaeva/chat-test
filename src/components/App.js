@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="main-wrapper">
-          <Sidebar />
+          <Sidebar {...this.props} />
           <Main {...this.props}/>
         </div>
       </div>
