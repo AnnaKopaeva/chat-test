@@ -1,10 +1,17 @@
 import * as types from './actionTypes';
 
-export function addMessage(dialogs, data) {
+export function addMessage(text) {
   return {
     type: types.ADD_MESSAGE,
+    text,
+  }
+}
+
+export function changeDialog(dialogs, key) {
+  return {
+    type: types.CHANGE_DIALOG,
     dialogs,
-    data
+    key
   }
 }
 
@@ -16,9 +23,9 @@ export function changeUser(userInfo, key) {
   }
 }
 
-export function changeActiveUser(active) {
+export function changeActiveUser(activeDialog) {
   return {
     type: types.CHANGE_ACTIVE_USER,
-    active
+    activeDialog
   }
 }

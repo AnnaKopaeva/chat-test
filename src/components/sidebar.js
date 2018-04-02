@@ -28,18 +28,19 @@ class Sidebar extends Component {
   };
 
   clickListItem = (key) => {
-    let { state: { userList }, actions: { changeActiveUser, changeUser } } = this.props;
+    let { state: { userList, dialogs }, actions: { changeActiveUser, changeUser, changeDialog } } = this.props;
     changeActiveUser(key);
     changeUser(userList, key);
+    changeDialog(dialogs, key);
   };
 
   render(){
     let { value, displayedName } = this.state;
-    let { active } = this.props.state;
+    let { activeDialog } = this.props.state;
 
     const listUsers = displayedName.map((user, key) =>
       <li
-        className={active === key ? 'sidebar__list_item sidebar__list_item--active' : 'sidebar__list_item'}
+        className={activeDialog === key ? 'sidebar__list_item sidebar__list_item--active' : 'sidebar__list_item'}
         key={key}
         onClick={() => this.clickListItem(key)}>
         <img src={user.img} className="sidebar__list_img" alt="user avatar"/>

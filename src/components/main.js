@@ -8,7 +8,6 @@ class Main extends Component {
     super(props);
     this.state = {
       value: '',
-      messages: [],
     };
   };
 
@@ -17,24 +16,29 @@ class Main extends Component {
   }
 
   clickButton = () => {
-    let { actions: { addMessage } } = this.props;
+    let { actions: { addMessage, changeDialog }, state: { dialogs, activeDialog } } = this.props;
     let { value } = this.state;
-    // addMessage(value)
-    console.log(this.props.state.message)
+
+    addMessage(value);
+    changeDialog(dialogs, activeDialog);
+    this.setState({value: ''});
+    console.log(this.props.state)
   };
 
   render(){
-    let { value, messages } = this.state;
-    let { state: { userInfo } } = this.props;
+    let { value } = this.state;
+    let { state: { userDialog } } = this.props;
 
-    let listMessages = messages.map((message) =>
-      <li>{message}</li>
+    let listMessages = userDialog.map((message, key) =>
+      <li
+        key={key}
+        className={message.is_owner ? "message-list__item message_list__item--owner" : "message-list__item"}
+      >{message.text}</li>
     );
-    console.log(userInfo)
 
     return(
       <div className="main">
-        <ul className="message-list">
+        <ul className="message_list">
           {listMessages}
         </ul>
         <div className="send">

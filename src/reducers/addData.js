@@ -6,12 +6,21 @@ import User2 from '../images/User2.png'
 import User3 from '../images/User3.png'
 
 const initialState = {
-  active: 0,
+  activeDialog: 0,
   userInfo: [{
     id: 0,
     name: "Liza Opolu",
     img: User1,
   }],
+  userDialog: [
+    {
+      text: "Hello everyone",
+      is_owner: true,
+    }, {
+      text: "Hey",
+      is_owner: false,
+    },
+  ],
   userList: [{
     id: 0,
     name: "Liza Opolu",
@@ -26,10 +35,35 @@ const initialState = {
     img: User3,
   }],
   dialogs: {
-    0: {},
-    1: {},
-    2: {},
+    0: [
+      {
+        text: "Hello everyone",
+        is_owner: true,
+      }, {
+        text: "Hey",
+        is_owner: false,
+      },
+    ],
+    1: [
+      {
+        text: "Hello everyone2",
+        is_owner: true,
+      }, {
+        text: "Hey2",
+        is_owner: false,
+      },
+    ],
+    2: [
+      {
+        text: "Hello everyone3",
+        is_owner: true,
+      }, {
+        text: "Hey3",
+        is_owner: false,
+      },
+    ],
   }
+
 };
 
 // checking for first loading if localStorage has data
@@ -44,19 +78,29 @@ export default function addData( state = initialState, action) {
       return {
         ...state,
         dialogs: {
-          ...action.dialogs,
-
+          ...state.dialogs,
+          [state.activeDialog] : [
+            ...state.dialogs[state.activeDialog],
+            {
+              text: action.text,
+              is_owner: true
+            }
+          ],
         }
+      };
+    case types.CHANGE_DIALOG:
+      return {
+        ...state,
+        userDialog : state.dialogs[action.key]
       };
     case types.CHANGE_ACTIVE_USER:
       return {
         ...state,
-        active: action.active
+        activeDialog: action.activeDialog
       };
     case types.CHANGE_USER:
       return {
         ...state,
-        //removes an element from the array with the selected key
         userInfo : state.userList[action.key]
       };
     default:

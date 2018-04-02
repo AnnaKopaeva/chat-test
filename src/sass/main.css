@@ -5,8 +5,25 @@
   flex-direction: column;
   height: 100%; }
 
-.message-list {
-  flex: 1 0 auto; }
+.message_list {
+  flex: 1 0 auto;
+  padding: 15px; }
+
+.message-list__item {
+  display: block;
+  padding: 10px;
+  background: #eee;
+  color: #000;
+  border-radius: 5px;
+  float: left;
+  clear: both;
+  margin-bottom: 10px; }
+
+.message_list__item--owner {
+  justify-content: flex-end;
+  background: #117bfb;
+  color: white;
+  float: right; }
 
 .send {
   flex: 0 0 auto;
