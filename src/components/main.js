@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
-
+// import translate from 'google-translate-api';
+import randomSentence from 'random-sentence';
 import '../sass/main.css'
 import Send from '../images/send-button.png'
 
@@ -16,13 +17,19 @@ class Main extends Component {
   }
 
   clickButton = () => {
-    let { actions: { addMessage, changeDialog }, state: { dialogs, activeDialog } } = this.props;
+    let { actions: { addMessage, addBotMessage, changeDialog }, state: { dialogs, activeDialog } } = this.props;
     let { value } = this.state;
 
     addMessage(value);
     changeDialog(dialogs, activeDialog);
+
+    setTimeout(function(){
+      addBotMessage(randomSentence({min: 2, max: 5}));
+      changeDialog(dialogs, activeDialog);
+    }, 1000);
+
     this.setState({value: ''});
-    console.log(this.props.state)
+
   };
 
   render(){

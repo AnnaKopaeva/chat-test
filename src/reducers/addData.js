@@ -88,6 +88,20 @@ export default function addData( state = initialState, action) {
           ],
         }
       };
+    case types.ADD_BOT_MESSAGE:
+      return {
+        ...state,
+        dialogs: {
+          ...state.dialogs,
+          [state.activeDialog] : [
+            ...state.dialogs[state.activeDialog],
+            {
+              text: action.text,
+              is_owner: false
+            }
+          ],
+        }
+      };
     case types.CHANGE_DIALOG:
       return {
         ...state,

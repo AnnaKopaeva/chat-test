@@ -7,6 +7,13 @@ export function addMessage(text) {
   }
 }
 
+export function addBotMessage(text) {
+  return {
+    type: types.ADD_BOT_MESSAGE,
+    text,
+  }
+}
+
 export function changeDialog(dialogs, key) {
   return {
     type: types.CHANGE_DIALOG,

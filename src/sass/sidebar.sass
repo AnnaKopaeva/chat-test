@@ -1,16 +1,20 @@
 .sidebar
-  max-width: 200px
+  flex-basis: 135px
   background-color: #eee
   display: flex
   flex-direction: column
   align-items: center
   padding: 10px
+  position: relative
+  transition: width 0.5s ease-out
 
 .sidebar__search
   width: 80%
   outline: none
   text-indent: 5px
   margin-top: 10px
+  opacity: 1
+  transition: opacity 0.5s ease-out
 
 .sidebar__list
   margin-top: 10px
@@ -34,3 +38,67 @@
 
 .sidebar__list_name
   padding-left: 10px
+  font-size: 12px
+  transition: font-size 0.5s ease-out
+
+.toggle_menu
+  width: 30px
+  height: 25px
+  position: relative
+  margin: 5px auto
+  transform: rotate(0deg)
+  transition: .5s ease-in-out
+  cursor: pointer
+  display: none
+
+.toggle_menu__span
+  display: block
+  position: absolute
+  height: 6px
+  width: 100%
+  background: #117bfb
+  border-radius: 9px
+  opacity: 1
+  left: 0
+  transform: rotate(0deg)
+  transition: .25s ease-in-out
+
+.toggle_menu
+  .toggle_menu__span
+    &:nth-child(1)
+      top: 0
+    &:nth-child(2), &:nth-child(3)
+      top: 9px
+    &:nth-child(4)
+      top: 18px
+
+.toggle_menu--open
+  .toggle_menu__span
+    &:nth-child(1)
+      top: 9px
+      width: 0%
+      left: 50%
+    &:nth-child(2)
+      transform: rotate(45deg)
+    &:nth-child(3)
+      transform: rotate(-45deg)
+    &:nth-child(4)
+      top: 9px
+      width: 0%
+      left: 50%
+
+.sidebar--close
+  flex-basis: 65px
+  padding: 10px 0
+  .sidebar__list_name
+    font-size: 0
+    padding-left: 0
+  .sidebar__search
+    opacity: 0
+
+@media screen and (max-width: 750px)
+  div.App
+    justify-content: flex-start
+    align-items: flex-start
+  .toggle_menu
+    display: block

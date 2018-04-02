@@ -1,4 +1,6 @@
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const ADD_BOT_MESSAGE = 'ADD_BOT_MESSAGE';
 export const CHANGE_DIALOG = 'CHANGE_DIALOG';
+export const OPEN_SIDEBAR = 'OPEN_SIDEBAR';
 export const CHANGE_USER = 'CHANGE_USER';
 export const CHANGE_ACTIVE_USER = 'CHANGE_ACTIVE_USER';
