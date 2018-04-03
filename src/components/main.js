@@ -20,13 +20,6 @@ class Main extends Component {
     this.setState({value: event.target.value});
   };
 
-  scrollToBottom = () => {
-    const scrollHeight = this.messagesEnd.scrollHeight;
-    const height = this.messagesEnd.clientHeight;
-    const maxScrollTop = scrollHeight - height;
-    this.messagesEnd.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
-  };
-
   clickButton = () => {
     let { actions: { addMessage, addBotMessage, changeDialog }, state: { dialogs, activeDialog } } = this.props;
     let { value } = this.state;
@@ -38,8 +31,6 @@ class Main extends Component {
       addBotMessage(randomSentence({min: 2, max: 5}));
       changeDialog(dialogs, activeDialog);
     }, 1000);
-
-    this.scrollToBottom();
 
     this.setState({value: ''});
   };
@@ -65,7 +56,7 @@ class Main extends Component {
 
     return(
       <div className="main">
-        <ul className="message_list" ref={(el) => { this.messagesEnd = el; }}>
+        <ul className="message_list">
           {listMessages}
         </ul>
         <div className="send">

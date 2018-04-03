@@ -59,11 +59,11 @@ export default function addData( state = newState, action) {
         dialogs: {
           ...state.dialogs,
           [state.activeDialog] : [
-            ...state.dialogs[state.activeDialog],
             {
               text: action.text,
               is_owner: true
-            }
+            },
+            ...state.dialogs[state.activeDialog],
           ],
         }
       };
@@ -73,11 +73,11 @@ export default function addData( state = newState, action) {
         dialogs: {
           ...state.dialogs,
           [state.activeDialog] : [
-            ...state.dialogs[state.activeDialog],
             {
               text: action.text,
               is_owner: false
-            }
+            },
+            ...state.dialogs[state.activeDialog],
           ],
         }
       };

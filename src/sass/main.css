@@ -13,10 +13,13 @@
   box-sizing: border-box;
   padding: 15px;
   overflow-y: auto;
+  transform: scaleY(-1);
+  align-items: initial;
   height: calc(100% - 58px); }
 
 .message-list__item {
   display: block;
+  transform: scaleY(-1);
   padding: 10px;
   background: #eee;
   color: #000;
