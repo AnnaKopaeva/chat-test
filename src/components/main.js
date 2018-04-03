@@ -12,8 +12,19 @@ class Main extends Component {
     };
   };
 
+  componentDidMount(){
+    this.nameInput.focus();
+  }
+
   handleChange = (event) => {
     this.setState({value: event.target.value});
+  };
+
+  scrollToBottom = () => {
+    const scrollHeight = this.messagesEnd.scrollHeight;
+    const height = this.messagesEnd.clientHeight;
+    const maxScrollTop = scrollHeight - height;
+    this.messagesEnd.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
   };
 
   clickButton = () => {
@@ -28,8 +39,16 @@ class Main extends Component {
       changeDialog(dialogs, activeDialog);
     }, 1000);
 
-    this.setState({value: ''});
+    this.scrollToBottom();
 
+    this.setState({value: ''});
+  };
+
+  handleKeyPress = (e) =>  {
+    let { value } = this.state;
+    if (value && e.key === 'Enter') {
+      this.clickButton();
+    }
   };
 
   render(){
@@ -40,13 +59,13 @@ class Main extends Component {
       <li
         key={key}
         className={message.is_owner ? "message-list__item message_list__item--owner" : "message-list__item"}>
-        {message.text}
+        <p className="message-list__text">{message.text}</p>
       </li>
     );
 
     return(
       <div className="main">
-        <ul className="message_list">
+        <ul className="message_list" ref={(el) => { this.messagesEnd = el; }}>
           {listMessages}
         </ul>
         <div className="send">
@@ -54,7 +73,9 @@ class Main extends Component {
             type="text"
             className="send__text"
             value={value}
+            ref={(input) => { this.nameInput = input; }}
             onChange={this.handleChange}
+            onKeyPress={this.handleKeyPress}
             placeholder="Click here to write something..."
           />
           <button

@@ -14,7 +14,7 @@
   flex: 1 0 auto
   box-sizing: border-box
   padding: 15px
-  overflow: auto
+  overflow-y: auto
   height: calc(100% - 58px)
 
 .message-list__item
@@ -26,6 +26,12 @@
   float: left
   clear: both
   margin-bottom: 10px
+
+.message-list__text
+  display: inline-block
+  word-wrap: break-word
+  overflow-wrap: break-word
+  max-width: 200px
 
 .message_list__item--owner
   justify-content: flex-end
