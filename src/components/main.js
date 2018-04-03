@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
-// import translate from 'google-translate-api';
 import randomSentence from 'random-sentence';
+
 import '../sass/main.css'
 import Send from '../images/send-button.png'
 
@@ -14,7 +14,7 @@ class Main extends Component {
 
   handleChange = (event) => {
     this.setState({value: event.target.value});
-  }
+  };
 
   clickButton = () => {
     let { actions: { addMessage, addBotMessage, changeDialog }, state: { dialogs, activeDialog } } = this.props;
@@ -39,8 +39,9 @@ class Main extends Component {
     let listMessages = userDialog.map((message, key) =>
       <li
         key={key}
-        className={message.is_owner ? "message-list__item message_list__item--owner" : "message-list__item"}
-      >{message.text}</li>
+        className={message.is_owner ? "message-list__item message_list__item--owner" : "message-list__item"}>
+        {message.text}
+      </li>
     );
 
     return(
@@ -57,7 +58,8 @@ class Main extends Component {
             placeholder="Click here to write something..."
           />
           <button
-            className="send__button"
+            className={!value ? "send__button send__button--disabled" : "send__button"}
+            disabled={!value}
             onClick={this.clickButton}>
             <img src={Send} alt="send" className="send__icon"/>
           </button>

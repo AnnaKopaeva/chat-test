@@ -3,14 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "google-translate-api": "^2.3.0",
     "node-sass-chokidar": "^1.2.2",
     "random-sentence": "^1.0.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.1",
-    "react-simple-chatbot": "^0.2.9",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"

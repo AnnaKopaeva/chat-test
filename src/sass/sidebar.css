@@ -1,12 +1,13 @@
 .sidebar {
   flex-basis: 135px;
+  flex-shrink: 1;
   background-color: #eee;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
   position: relative;
-  transition: width 0.5s ease-out; }
+  transition: flex-basis 0.5s ease-in-out; }
 
 .sidebar__search {
   width: 80%;
@@ -39,6 +40,7 @@
 .sidebar__list_name {
   padding-left: 10px;
   font-size: 12px;
+  text-align: left;
   transition: font-size 0.5s ease-out; }
 
 .toggle_menu {
@@ -47,7 +49,7 @@
   position: relative;
   margin: 5px auto;
   transform: rotate(0deg);
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
   cursor: pointer;
   display: none; }
 
@@ -98,8 +100,15 @@
     opacity: 0; }
 
 @media screen and (max-width: 750px) {
-  div.App {
-    justify-content: flex-start;
-    align-items: flex-start; }
   .toggle_menu {
     display: block; } }
+
+@media screen and (max-width: 375px) {
+  .sidebar__search {
+    font-size: 11px; }
+  .sidebar__list_item {
+    flex-direction: column; }
+  .sidebar__list_name {
+    text-align: center;
+    padding-left: 0;
+    padding-top: 10px; } }

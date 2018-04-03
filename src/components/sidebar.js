@@ -23,7 +23,7 @@ class Sidebar extends Component {
     } else {
       this.setState({ open: false });
     }
-  }
+  };
 
   componentDidMount() {
     this.updateDimensions();
@@ -45,6 +45,7 @@ class Sidebar extends Component {
         return -1;
       }
     });
+
     this.setState({value: event.target.value, displayedName});
   };
 
@@ -53,7 +54,6 @@ class Sidebar extends Component {
     changeActiveUser(key);
     changeUser(userList, key);
     changeDialog(dialogs, key);
-    this.setState({open: !this.state.open})
   };
 
   toggleButton = () => {

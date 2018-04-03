@@ -1,12 +1,15 @@
+@import './value.sass'
+
 .sidebar
   flex-basis: 135px
-  background-color: #eee
+  flex-shrink: 1
+  background-color: $grey
   display: flex
   flex-direction: column
   align-items: center
   padding: 10px
   position: relative
-  transition: width 0.5s ease-out
+  transition: flex-basis $time ease-in-out
 
 .sidebar__search
   width: 80%
@@ -14,7 +17,7 @@
   text-indent: 5px
   margin-top: 10px
   opacity: 1
-  transition: opacity 0.5s ease-out
+  transition: opacity $time ease-out
 
 .sidebar__list
   margin-top: 10px
@@ -29,17 +32,18 @@
     cursor: pointer
 
 .sidebar__list_item--active
-  background-color: #117bfb
+  background-color: $blue
 
 .sidebar__list_img
   width: 40px
   height: 40px
-  border: 1px solid #eee
+  border: 1px solid $grey
 
 .sidebar__list_name
   padding-left: 10px
   font-size: 12px
-  transition: font-size 0.5s ease-out
+  text-align: left
+  transition: font-size $time ease-out
 
 .toggle_menu
   width: 30px
@@ -47,7 +51,7 @@
   position: relative
   margin: 5px auto
   transform: rotate(0deg)
-  transition: .5s ease-in-out
+  transition: $time ease-in-out
   cursor: pointer
   display: none
 
@@ -56,7 +60,7 @@
   position: absolute
   height: 6px
   width: 100%
-  background: #117bfb
+  background: $blue
   border-radius: 9px
   opacity: 1
   left: 0
@@ -97,8 +101,15 @@
     opacity: 0
 
 @media screen and (max-width: 750px)
-  div.App
-    justify-content: flex-start
-    align-items: flex-start
   .toggle_menu
     display: block
+
+@media screen and (max-width: 375px)
+  .sidebar__search
+    font-size: 11px
+  .sidebar__list_item
+    flex-direction: column
+  .sidebar__list_name
+    text-align: center
+    padding-left: 0
+    padding-top: 10px
